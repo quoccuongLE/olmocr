@@ -40,6 +40,14 @@ dependencies = [
   "torch>=2.7.0",
   "transformers==4.55.2",
   "beaker-py",
+  "pandas>=2.3.3",
+  "pyarrow>=22.0.0",
+  "fastparquet>=2024.11.0",
+  "huggingface-hub>=0.36.0",
+  "wandb>=0.22.3",
+  "rapidfuzz>=3.14.3",
+  "trl>=0.22.2",
+  "pip>=25.3",
 ]
 license = {file = "LICENSE"}
 
