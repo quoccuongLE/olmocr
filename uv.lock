@@ -1227,6 +1227,25 @@ wheels = [
 ]
 
 [[package]]
+name = "deepspeed"
+version = "0.18.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "einops" },
+    { name = "hjson" },
+    { name = "msgpack" },
+    { name = "ninja" },
+    { name = "numpy" },
+    { name = "packaging" },
+    { name = "psutil" },
+    { name = "py-cpuinfo" },
+    { name = "pydantic" },
+    { name = "torch" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/74/cd/c4cdcc947db3d1f103223b2067e455710c5674acdff249289bc3c0501ecf/deepspeed-0.18.2.tar.gz", hash = "sha256:892c3213cfefe6df8692d699eae3ca37714cac87afe7f72d4b89acd1df3af1c0", size = 1610428, upload-time = "2025-11-05T19:23:34.49Z" }
+
+[[package]]
 name = "defusedxml"
 version = "0.7.1"
 source = { registry = "https://pypi.org/simple" }
@@ -2033,6 +2052,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/dd/7ac658d54b9fb7999a0ccb07ad863b413cbaf5cf172f48ebcd9497ec7263/hf_xet-1.2.0-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:4c1428c9ae73ec0939410ec73023c4f842927f39db09b063b9482dac5a3bb737", size = 3413812, upload-time = "2025-10-24T19:04:24.585Z" },
     { url = "https://files.pythonhosted.org/packages/92/68/89ac4e5b12a9ff6286a12174c8538a5930e2ed662091dd2572bbe0a18c8a/hf_xet-1.2.0-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:a55558084c16b09b5ed32ab9ed38421e2d87cf3f1f89815764d1177081b99865", size = 3508920, upload-time = "2025-10-24T19:04:26.927Z" },
     { url = "https://files.pythonhosted.org/packages/cb/44/870d44b30e1dcfb6a65932e3e1506c103a8a5aea9103c337e7a53180322c/hf_xet-1.2.0-cp37-abi3-win_amd64.whl", hash = "sha256:e6584a52253f72c9f52f9e549d5895ca7a471608495c4ecaa6cc73dba2b24d69", size = 2905735, upload-time = "2025-10-24T19:04:35.928Z" },
+]
+
+[[package]]
+name = "hjson"
+version = "3.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/82/e5/0b56d723a76ca67abadbf7fb71609fb0ea7e6926e94fcca6c65a85b36a0e/hjson-3.1.0.tar.gz", hash = "sha256:55af475a27cf83a7969c808399d7bccdec8fb836a07ddbd574587593b9cdcf75", size = 40541, upload-time = "2022-08-13T02:53:01.919Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/7f/13cd798d180af4bf4c0ceddeefba2b864a63c71645abc0308b768d67bb81/hjson-3.1.0-py3-none-any.whl", hash = "sha256:65713cdcf13214fb554eb8b4ef803419733f4f5e551047c9b711098ab7186b89", size = 54018, upload-time = "2022-08-13T02:52:59.899Z" },
 ]
 
 [[package]]
@@ -3742,6 +3770,8 @@ dependencies = [
     { name = "boto3" },
     { name = "cached-path" },
     { name = "cryptography" },
+    { name = "deepspeed" },
+    { name = "fastapi" },
     { name = "fastparquet" },
     { name = "filelock" },
     { name = "ftfy" },
@@ -3762,7 +3792,9 @@ dependencies = [
     { name = "smart-open" },
     { name = "torch" },
     { name = "transformers" },
-    { name = "trl" },
+    { name = "trl", extra = ["vllm"] },
+    { name = "uvicorn" },
+    { name = "vllm" },
     { name = "wandb" },
     { name = "zstandard" },
 ]
@@ -3844,7 +3876,9 @@ requires-dist = [
     { name = "cached-path" },
     { name = "cryptography" },
     { name = "datasets", marker = "extra == 'dev'" },
+    { name = "deepspeed", specifier = ">=0.18.2" },
     { name = "einops", marker = "extra == 'train'" },
+    { name = "fastapi", specifier = ">=0.121.1" },
     { name = "fastparquet", specifier = ">=2024.11.0" },
     { name = "filelock" },
     { name = "flask", marker = "extra == 'bench'" },
@@ -3903,10 +3937,12 @@ requires-dist = [
     { name = "torch", marker = "extra == 'train'" },
     { name = "torchvision", marker = "extra == 'train'" },
     { name = "transformers", specifier = "==4.55.2" },
-    { name = "trl", specifier = ">=0.22.2" },
     { name = "trl", marker = "extra == 'dev'" },
     { name = "trl", marker = "extra == 'train'" },
+    { name = "trl", extras = ["vllm"], specifier = ">=0.22.2" },
     { name = "twine", marker = "extra == 'dev'", specifier = ">=1.11.0" },
+    { name = "uvicorn", specifier = ">=0.38.0" },
+    { name = "vllm", specifier = ">=0.11.0" },
     { name = "vllm", marker = "extra == 'gpu'", specifier = "==0.11.0" },
     { name = "wandb", specifier = ">=0.22.3" },
     { name = "wandb", marker = "extra == 'dev'" },
@@ -6939,6 +6975,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/c9/70/cf4f7936669457103d10aaa235fcf17d58f902f389acef93cb392118e019/trl-0.22.2.tar.gz", hash = "sha256:343203711339cb4f200b78fee35efa39655b2e6a0f8a63ce0b077973e689c12a", size = 497063, upload-time = "2025-09-03T14:41:58.055Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ed/89/b10851fcad71e9ff7a6e74c5981476a7a3aa4efc0e9ef24176eb859990c9/trl-0.22.2-py3-none-any.whl", hash = "sha256:b5b058bc2b876f3b9d04e3ac54c6ad085b09f5583becefefd10d88a7cd150e21", size = 544789, upload-time = "2025-09-03T14:41:56.419Z" },
+]
+
+[package.optional-dependencies]
+vllm = [
+    { name = "fastapi", marker = "python_full_version < '3.13'" },
+    { name = "pydantic", marker = "python_full_version < '3.13'" },
+    { name = "requests", marker = "python_full_version < '3.13'" },
+    { name = "uvicorn", marker = "python_full_version < '3.13'" },
+    { name = "vllm", marker = "python_full_version < '3.13'" },
 ]
 
 [[package]]

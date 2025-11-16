@@ -856,6 +856,9 @@ def main():
     parser.add_argument("--num_iterations", type=int, default=1, help="Number of GRPO iterations (default: 1)")
     parser.add_argument("--num_generations", type=int, default=28, help="Number of generations per prompt (default: 28)")
 
+    parser.add_argument("--vllm_server_host", type=str, default="localhost")
+    parser.add_argument("--vllm_server_port", type=str, default="8000")
+
     args = parser.parse_args()
 
     # Set up output directory
@@ -1027,6 +1030,8 @@ def main():
         # Vllm setup to speed up generation
         use_vllm=(args.vllm_mode != "none"),
         vllm_mode=args.vllm_mode if args.vllm_mode != "none" else "colocate",
+        vllm_server_host=args.vllm_server_host,
+        vllm_server_port=args.vllm_server_port,
         vllm_gpu_memory_utilization=0.15,
         log_completions=True,
     )

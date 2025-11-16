@@ -48,6 +48,12 @@ dependencies = [
   "rapidfuzz>=3.14.3",
   "trl>=0.22.2",
   "pip>=25.3",
+  "deepspeed>=0.18.2",
+  "fuzzysearch>=0.8.0",
+  "playwright>=1.55.0",
+  "weave>=0.51.56",
+  "torchvision>=0.23.0",
+  "vllm>=0.11.0",
 ]
 license = {file = "LICENSE"}
 
